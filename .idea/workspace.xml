@@ -19,12 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54c20569-326f-497c-bb88-8f5a08faa587" name="Default Changelist" comment="added requirements.txt">
-      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/334c217e-7975-4576-9f9a-c3a1a6289ada.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="54c20569-326f-497c-bb88-8f5a08faa587" name="Default Changelist" comment="third commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,7 +147,7 @@
       <workItem from="1645168955721" duration="9051000" />
       <workItem from="1645191623708" duration="72824000" />
       <workItem from="1645423379741" duration="26000" />
-      <workItem from="1645423427813" duration="321000" />
+      <workItem from="1645423427813" duration="860000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1645420549085</created>
@@ -168,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645421874556</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="third commit">
+      <created>1645423977337</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1645423977338</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,7 +191,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="added requirements.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="added requirements.txt" />
+    <MESSAGE value="third commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="third commit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="109" width="1089" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1645191696417">
@@ -232,10 +235,10 @@
       <screen x="0" y="43" width="1536" height="821" />
     </state>
     <state x="277" y="99" key="SettingsEditor/0.43.1536.821@0.43.1536.821" timestamp="1645268876526" />
-    <state x="361" y="187" key="Vcs.Push.Dialog.v2" timestamp="1645421929458">
+    <state x="361" y="187" key="Vcs.Push.Dialog.v2" timestamp="1645423966585">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
-    <state x="361" y="187" key="Vcs.Push.Dialog.v2/0.43.1536.821@0.43.1536.821" timestamp="1645421929458" />
+    <state x="361" y="187" key="Vcs.Push.Dialog.v2/0.43.1536.821@0.43.1536.821" timestamp="1645423966585" />
     <state x="349" y="109" key="com.intellij.database.dbimport.ImportDialog" timestamp="1645191097480">
       <screen x="0" y="43" width="1536" height="821" />
     </state>

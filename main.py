@@ -9,7 +9,7 @@ from pydantic import BaseModel
 
 chars = 'qwertyuiopasdfghjklzxcvbnm1234567890-_'
 codes_length = 16
-server_ip = 'http://127.0.0.1:8000/'
+server_ip = 'https://elections-backend-upml.herokuapp.com/'
 offline_voters_count = 150
 database_name = 'database.sqlite3'
 
