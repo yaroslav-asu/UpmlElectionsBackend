@@ -371,8 +371,6 @@ def get_role(session_id: str):
 
 
 is_ended_val = False
-from pytrovich.enums import NamePart, Gender, Case
-from pytrovich.maker import PetrovichDeclinationMaker
 
 
 @app.post('/toggle-end/')
@@ -399,13 +397,7 @@ def get_winner_name():
             get_percentage(), key=lambda item: item[1], reverse=True)[0][0],))
         result = cur.fetchone()
         con.close()
-        if result[2]:
-            gender = Gender.MALE
-        else:
-            gender = Gender.FEMALE
-        maker = PetrovichDeclinationMaker()
-        return maker.make(NamePart.FIRSTNAME, gender, Case.ACCUSATIVE, result[0]) + ' ' + \
-               maker.make(NamePart.LASTNAME, gender, Case.ACCUSATIVE, result[1])
+        return result
     return ''
 
 
@@ -453,7 +445,6 @@ if __name__ == '__main__':
     try:
         import os
 
-        is_ended_val = False
         command = 'uvicorn main:app --reload'
         os.system(command)
     except Exception as error:
