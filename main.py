@@ -17,54 +17,23 @@ app = FastAPI()
 origins = [
     # "http://localhost.tiangolo.com",
     # "https://localhost.tiangolo.com",
-    "http://192.168.43.76:8080/",
-    "http://192.168.56.1:8080/",
-    "http://127.0.0.1:8000/",
-    "http://localhost:8080/",
+    "http://elections.zoncord.tech",
+    "http://192.168.43.76:8080",
+    "http://192.168.56.1:8080",
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1:8080",
+    "http://localhost:8080",
+    "localhost:8080",
+    "http://localhost",
+    "localhost",
 ]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=False,
+    allow_origins=origins,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-candidates = {
-    'Владимир Симкин': {
-        'percentage': 30,
-        'color': 'red',
-        'imagePath': 'file://localhost/C:/Users/yaros/Downloads/png.png'
-    },
-    'Гуськова Алена': {
-        'percentage': 20,
-        'color': 'blue',
-        'imagePath': 'https://androidinsider.ru/wp-content/uploads/2020/07/beaytiful_sky-750x469'
-                     '.jpg',
-    },
-    'Кириллова Диана':
-        {'percentage': 10,
-         'color': 'purple',
-         'imagePath': 'https://avatars.mds.yandex.net/get-kinopoisk-post-img/1345014/95e44cfe0abaddb03e43181d31a9f788/960x540'
-         },
-    'Шапошников Артем': {
-        'percentage': 2,
-        'color': 'gray',
-    },
-    'Галочкин Иван': {
-        'percentage': 5,
-        'color': 'gray',
-    },
-    'Филиппов Яросалв': {
-        'percentage': 23,
-        'color': 'gray',
-    },
-    'Никто': {
-        'percentage': 10,
-        'color': 'gray',
-        'imagePath': 'https://cdn-icons-png.flaticon.com/512/61/61155.png'
-    },
-}
 
 
 class Voter(BaseModel):
@@ -88,17 +57,6 @@ def generate_code(length: int):
         password += chars[randint(0, length - 1)]
     return password
 
-
-# @app.post("/registration/")
-# def registration(voter: Voter):
-#     con = sqlite3.connect(database_name)
-#     cur = con.cursor()
-#     salt = generate_code(codes_length)
-#     coded_password = hashlib.pbkdf2_hmac('sha256', bytes(voter.password, 'utf8'),
-#                                          bytes(salt, 'utf8'), 2)
-#     cur.execute('''INSERT INTO voters VALUES (null, ?, ?, ?, ?, ?, ?)''',
-#                 (voter.name, voter.surname, voter.patronymic, coded_password, salt))
-#     con.close()
 
 def check_session_id(session_id):
     if session_id:
@@ -140,8 +98,9 @@ def check_user_password(voter):
 def is_voted(session_id):
     con = sqlite3.connect(database_name)
     cur = con.cursor()
-    cur.execute('''SELECT "voter-session-id" from votes where "voter-session-id" = ?''',
-                (session_id,))
+    cur.execute(
+        '''SELECT "session-id" from votes join voters on "voter-id" where "session-id" = ?''',
+        (session_id,))
     result = cur.fetchone()
     con.close()
     if result:
@@ -229,11 +188,10 @@ def return_image(image_name: str):
 
 @app.get('/candidates/')
 def get_candidates():
-    global server_ip
     con = sqlite3.connect(database_name)
     cur = con.cursor()
-    cur.execute('''select id, name, surname, "image-path", "offline-votes" from 
-    candidates''')
+    cur.execute('''select id, name, surname, "image-path", "offline-votes", gender from candidates 
+    order by name''')
     result = cur.fetchall()
     con.close()
     if result:
@@ -248,9 +206,10 @@ def get_candidates():
                 'candidateId': result[candidate][0],
                 'name': result[candidate][1],
                 'surname': result[candidate][2],
-                'image': server_ip + str(result[candidate][3]),
+                'image': str(result[candidate][3]),
                 "offlineVotes": result[candidate][4],
                 "onlineVotes": online_votes,
+                "gender": result[candidate][5],
             }
         return result
     return []
@@ -260,7 +219,7 @@ def get_candidates():
 def get_votes():
     con = sqlite3.connect(database_name)
     cur = con.cursor()
-    cur.execute('''select id, "offline-votes" from candidates''')
+    cur.execute('''select id, "offline-votes"  from candidates order by name''')
     result = {}
     offline_votes = cur.fetchall()
     for data in offline_votes:
@@ -275,13 +234,15 @@ def get_votes():
 
 @app.get('/percentage/')
 def get_percentage():
-    votes_amount = 0
+    votes_amount = 1
     per_candidate_votes = get_votes()
     for votes in per_candidate_votes.values():
         votes_amount += votes
+    if votes_amount > 1:
+        votes_amount -= 1
     for candidate_id in per_candidate_votes.keys():
         per_candidate_votes[candidate_id] = (per_candidate_votes[candidate_id] / votes_amount) * 100
-    return per_candidate_votes
+    return list(per_candidate_votes.items())
 
 
 @app.post("/login/")
@@ -310,8 +271,8 @@ def add_empty_candidate(session_id: SessionId):
     if is_admin_session_id(session_id.session_id):
         con = sqlite3.connect(database_name)
         cur = con.cursor()
-        cur.execute('''insert into candidates values (?, ?, ?, ?, ?)''',
-                    (None, None, None, None, 0))
+        cur.execute('''insert into candidates values (?, ?, ?, ?, ?, ?)''',
+                    (None, None, None, None, 0, 1))
         con.commit()
         cur.execute('''SELECT MAX(`id`) FROM candidates''')
         result = cur.fetchone()
@@ -377,6 +338,7 @@ def change_candidate(session_id: str = Form(...),
                      image: Optional[List[UploadFile]] = File(None),
                      offline_votes: int = Form(...),
                      candidate_id: int = Form(...),
+                     gender: int = Form(...),
                      ):
     if is_admin_session_id(session_id):
         con = sqlite3.connect(database_name)
@@ -386,8 +348,8 @@ def change_candidate(session_id: str = Form(...),
             cur.execute('''UPDATE candidates SET "image-path" = ?  WHERE id = ?''',
                         (image_path, candidate_id))
         cur.execute('''UPDATE candidates SET name = ?, surname = ?,
-        "offline-votes" = ? WHERE id = ?''',
-                    (name, surname, offline_votes, candidate_id))
+        "offline-votes" = ?, gender = ? WHERE id = ?''',
+                    (name, surname, offline_votes, gender, candidate_id))
         con.commit()
         con.close()
         return True
@@ -406,10 +368,49 @@ def get_role(session_id: str):
     return result
 
 
+is_ended_val = False
+from pytrovich.enums import NamePart, Gender, Case
+from pytrovich.maker import PetrovichDeclinationMaker
+
+
+@app.post('/toggle-end/')
+def toggle_end(session_id: SessionId):
+    global is_ended_val
+    if is_admin_session_id(session_id.session_id):
+        is_ended_val = not is_ended_val
+    return ''
+
+
+@app.get('/is-ended/')
+def is_ended():
+    global is_ended_val
+    return is_ended_val
+
+
+@app.get('/winner-name/')
+def get_winner_name():
+    global is_ended_val
+    if is_ended_val:
+        con = sqlite3.connect(database_name)
+        cur = con.cursor()
+        cur.execute('''select name, surname, gender from candidates where id = ?''', (sorted(
+            get_percentage(), key=lambda item: item[1], reverse=True)[0][0],))
+        result = cur.fetchone()
+        if result[2]:
+            gender = Gender.MALE
+        else:
+            gender = Gender.FEMALE
+        maker = PetrovichDeclinationMaker()
+        return maker.make(NamePart.FIRSTNAME, gender, Case.ACCUSATIVE, result[0]) + ' ' + \
+               maker.make(NamePart.LASTNAME, gender, Case.ACCUSATIVE, result[1])
+    return ''
+
+
 if __name__ == '__main__':
     try:
         import os
 
+        is_ended_val = False
         command = 'uvicorn main:app --reload'
         os.system(command)
     except Exception as error:
