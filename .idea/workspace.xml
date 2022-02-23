@@ -19,11 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54c20569-326f-497c-bb88-8f5a08faa587" name="Default Changelist" comment="login via qr requirements.txt">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/database.sqlite3" afterDir="false" />
+    <list default="true" id="54c20569-326f-497c-bb88-8f5a08faa587" name="Default Changelist" comment="petrovich was moved to js">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +150,7 @@
       <workItem from="1645191623708" duration="72824000" />
       <workItem from="1645423379741" duration="26000" />
       <workItem from="1645423427813" duration="2131000" />
-      <workItem from="1645443958965" duration="33787000" />
+      <workItem from="1645443958965" duration="34452000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1645420549085</created>
@@ -204,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645618168262</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="petrovich was moved to js">
+      <created>1645626610980</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1645626610980</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,7 +237,8 @@
     <MESSAGE value="mvp" />
     <MESSAGE value="login via qr" />
     <MESSAGE value="login via qr requirements.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="login via qr requirements.txt" />
+    <MESSAGE value="petrovich was moved to js" />
+    <option name="LAST_COMMIT_MESSAGE" value="petrovich was moved to js" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2143" y="109" width="1089" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1645586127310">
@@ -291,12 +296,12 @@
     </state>
     <state x="277" y="99" key="SettingsEditor/0.43.1536.821@0.43.1536.821" timestamp="1645268876526" />
     <state x="2197" y="99" key="SettingsEditor/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645528523646" />
-    <state x="361" y="187" key="Vcs.Push.Dialog.v2" timestamp="1645618035269">
-      <screen x="0" y="43" width="1536" height="821" />
+    <state x="2281" y="187" key="Vcs.Push.Dialog.v2" timestamp="1645626616761">
+      <screen x="1920" y="43" width="1536" height="821" />
     </state>
     <state x="361" y="187" key="Vcs.Push.Dialog.v2/0.43.1536.821@0.43.1536.821" timestamp="1645424356350" />
     <state x="361" y="187" key="Vcs.Push.Dialog.v2/1920.43.1536.821/0.43.1536.821@0.43.1536.821" timestamp="1645618035269" />
-    <state x="2281" y="187" key="Vcs.Push.Dialog.v2/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645599567258" />
+    <state x="2281" y="187" key="Vcs.Push.Dialog.v2/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645626616761" />
     <state x="349" y="109" key="com.intellij.database.dbimport.ImportDialog" timestamp="1645191097480">
       <screen x="0" y="43" width="1536" height="821" />
     </state>

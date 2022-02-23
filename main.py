@@ -14,6 +14,7 @@ database_name = 'database.sqlite3'
 
 app = FastAPI()
 origins = [
+    "https://elections.zoncord.tech",
     "http://elections.zoncord.tech",
     "http://192.168.43.76:8080",
     "http://192.168.56.1:8080",
