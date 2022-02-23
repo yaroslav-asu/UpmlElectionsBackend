@@ -44,7 +44,7 @@ try:
     #         str(password),
     #         salt,
     #     ))
-    register_voter('tv', 'tv', 'tv', 'tv', 2)
+    register_voter('c', 'c', 'c', 'c', 2)
     con.commit()
 except Exception as error:
     con.close()

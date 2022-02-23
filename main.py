@@ -9,14 +9,11 @@ from pydantic import BaseModel
 
 chars = 'qwertyuiopasdfghjklzxcvbnm1234567890-_'
 codes_length = 16
-server_ip = 'https://elections-backend-upml.herokuapp.com/'
 offline_voters_count = 150
 database_name = 'database.sqlite3'
 
 app = FastAPI()
 origins = [
-    # "http://localhost.tiangolo.com",
-    # "https://localhost.tiangolo.com",
     "http://elections.zoncord.tech",
     "http://192.168.43.76:8080",
     "http://192.168.56.1:8080",
@@ -48,6 +45,11 @@ class Candidate(BaseModel):
     surname: str
     image_path: str
     offline_votes: int
+
+
+def hash_password(password, salt, hash_count=2):
+    return hashlib.pbkdf2_hmac('sha256', password, salt,
+                               hash_count)
 
 
 def generate_code(length: int):
@@ -89,8 +91,8 @@ def check_user_password(voter):
         cur.execute('''SELECT salt, password FROM voters WHERE id = ?''', (user_id,))
         salt, right_password = cur.fetchone()
         con.close()
-        if hashlib.pbkdf2_hmac('sha256', bytes(voter.password, 'utf8'),
-                               bytes(salt, 'utf8'), 2) == right_password:
+        print(right_password, '!')
+        if hash_password(bytes(voter.password, 'utf-8'), bytes(salt, 'utf-8')) == right_password:
             return True
     return False
 
@@ -253,10 +255,10 @@ def login(voter: Voter):
 def is_admin_session_id(session_id):
     con = sqlite3.connect(database_name)
     cur = con.cursor()
-    cur.execute('''select id from voters where "session-id" = ?''', (session_id,))
+    cur.execute('''select role from voters where "session-id" = ?''', (session_id,))
     result = cur.fetchone()
     con.close()
-    if result:
+    if result and result[0] != 0:
         return True
     return False
 
@@ -396,6 +398,7 @@ def get_winner_name():
         cur.execute('''select name, surname, gender from candidates where id = ?''', (sorted(
             get_percentage(), key=lambda item: item[1], reverse=True)[0][0],))
         result = cur.fetchone()
+        con.close()
         if result[2]:
             gender = Gender.MALE
         else:
@@ -404,6 +407,46 @@ def get_winner_name():
         return maker.make(NamePart.FIRSTNAME, gender, Case.ACCUSATIVE, result[0]) + ' ' + \
                maker.make(NamePart.LASTNAME, gender, Case.ACCUSATIVE, result[1])
     return ''
+
+
+class LoginByQrSerializer(BaseModel):
+    admin_session_id: str
+    name: str
+
+
+@app.post('/qr-login/')
+def login_by_qr(serializer: LoginByQrSerializer):
+    # print(is_admin_session_id('wseowefgaosrquhe'))
+    if is_admin_session_id(serializer.admin_session_id):
+        con = sqlite3.connect(database_name)
+        cur = con.cursor()
+        cur.execute('''select "session-id", role from voters where surname = ? and name = ? and 
+        patronymic = ?''', serializer.name.split())
+        result = cur.fetchone()
+        con.close()
+        return result
+    return False
+
+
+# @app.get('/user-enter-qr/{session_id}/{username}')
+# def get_user_enter_qr(session_id: str,
+#                       username: str):
+#     if is_admin_session_id(session_id):
+#         con = sqlite3.connect(database_name)
+#         cur = con.cursor()
+#         print(username)
+#         cur.execute('''select password, salt from voters where surname = ? and name = ? and
+#         patronymic = ?''', tuple(username.split()))
+#         result = cur.fetchone()
+#         con.close()
+#         # if result:
+#         #     return decode_password(result[0], bytes(result[1], 'utf-8'))
+#
+
+#
+# @app.get('/test-header/')
+# def test_header(name: Optional[str] = Header(None)):
+#     return name
 
 
 if __name__ == '__main__':

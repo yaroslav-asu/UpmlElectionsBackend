@@ -19,10 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54c20569-326f-497c-bb88-8f5a08faa587" name="Default Changelist" comment="changed server ip">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/32671555-19ae-4fcf-b90f-7f8a0b263f66.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/32671555-19ae-4fcf-b90f-7f8a0b263f66.xml" afterDir="false" />
+    <list default="true" id="54c20569-326f-497c-bb88-8f5a08faa587" name="Default Changelist" comment="mvp">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/database.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generate_codes.py" beforeDir="false" afterPath="$PROJECT_DIR$/generate_codes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +60,7 @@
       <recent name="C:\Projects\Python\UPML_elections" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.generate_codes">
     <configuration name="generate_codes" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="UPML_elections" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -134,8 +134,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.generate_codes" />
+        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -153,7 +153,7 @@
       <workItem from="1645191623708" duration="72824000" />
       <workItem from="1645423379741" duration="26000" />
       <workItem from="1645423427813" duration="2131000" />
-      <workItem from="1645443958965" duration="19077000" />
+      <workItem from="1645443958965" duration="28050000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1645420549085</created>
@@ -183,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645424333039</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="новый функционал">
+      <created>1645599515349</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1645599515349</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,7 +213,8 @@
     <MESSAGE value="added requirements.txt" />
     <MESSAGE value="third commit" />
     <MESSAGE value="changed server ip" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed server ip" />
+    <MESSAGE value="mvp" />
+    <option name="LAST_COMMIT_MESSAGE" value="mvp" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2143" y="109" width="1089" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1645586127310">
@@ -227,26 +235,34 @@
     </state>
     <state x="548" y="233" key="FileChooserDialogImpl/0.43.1536.821@0.43.1536.821" timestamp="1645444021596" />
     <state x="2468" y="233" key="FileChooserDialogImpl/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645551054680" />
-    <state width="1493" height="260" key="GridCell.Tab.0.bottom" timestamp="1645550709718">
+    <state x="2521" y="352" key="Git.Rebase.Log.Action.NewCommitMessage.Dialog" timestamp="1645599557367">
       <screen x="1920" y="43" width="1536" height="821" />
+    </state>
+    <state x="2521" y="352" key="Git.Rebase.Log.Action.NewCommitMessage.Dialog/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645599557367" />
+    <state width="1493" height="239" key="GridCell.Tab.0.bottom" timestamp="1645611458864">
+      <screen x="0" y="43" width="1536" height="821" />
     </state>
     <state width="1493" height="304" key="GridCell.Tab.0.bottom/0.43.1536.821@0.43.1536.821" timestamp="1645517913027" />
-    <state width="1493" height="260" key="GridCell.Tab.0.bottom/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645550709718" />
-    <state width="1493" height="260" key="GridCell.Tab.0.center" timestamp="1645550709718">
-      <screen x="1920" y="43" width="1536" height="821" />
+    <state width="1493" height="239" key="GridCell.Tab.0.bottom/1920.43.1536.821/0.43.1536.821@0.43.1536.821" timestamp="1645611458864" />
+    <state width="1493" height="2" key="GridCell.Tab.0.bottom/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645599551345" />
+    <state width="1493" height="239" key="GridCell.Tab.0.center" timestamp="1645611458864">
+      <screen x="0" y="43" width="1536" height="821" />
     </state>
     <state width="1493" height="304" key="GridCell.Tab.0.center/0.43.1536.821@0.43.1536.821" timestamp="1645517913027" />
-    <state width="1493" height="260" key="GridCell.Tab.0.center/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645550709718" />
-    <state width="1493" height="260" key="GridCell.Tab.0.left" timestamp="1645550709718">
-      <screen x="1920" y="43" width="1536" height="821" />
+    <state width="1493" height="239" key="GridCell.Tab.0.center/1920.43.1536.821/0.43.1536.821@0.43.1536.821" timestamp="1645611458864" />
+    <state width="1493" height="2" key="GridCell.Tab.0.center/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645599551345" />
+    <state width="1493" height="239" key="GridCell.Tab.0.left" timestamp="1645611458863">
+      <screen x="0" y="43" width="1536" height="821" />
     </state>
     <state width="1493" height="304" key="GridCell.Tab.0.left/0.43.1536.821@0.43.1536.821" timestamp="1645517913026" />
-    <state width="1493" height="260" key="GridCell.Tab.0.left/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645550709718" />
-    <state width="1493" height="260" key="GridCell.Tab.0.right" timestamp="1645550709718">
-      <screen x="1920" y="43" width="1536" height="821" />
+    <state width="1493" height="239" key="GridCell.Tab.0.left/1920.43.1536.821/0.43.1536.821@0.43.1536.821" timestamp="1645611458863" />
+    <state width="1493" height="2" key="GridCell.Tab.0.left/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645599551345" />
+    <state width="1493" height="239" key="GridCell.Tab.0.right" timestamp="1645611458864">
+      <screen x="0" y="43" width="1536" height="821" />
     </state>
     <state width="1493" height="304" key="GridCell.Tab.0.right/0.43.1536.821@0.43.1536.821" timestamp="1645517913027" />
-    <state width="1493" height="260" key="GridCell.Tab.0.right/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645550709718" />
+    <state width="1493" height="239" key="GridCell.Tab.0.right/1920.43.1536.821/0.43.1536.821@0.43.1536.821" timestamp="1645611458864" />
+    <state width="1493" height="2" key="GridCell.Tab.0.right/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645599551345" />
     <state width="189" height="457" key="HiddenNamespacesPopup" timestamp="1645191664135">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
@@ -256,10 +272,11 @@
     </state>
     <state x="277" y="99" key="SettingsEditor/0.43.1536.821@0.43.1536.821" timestamp="1645268876526" />
     <state x="2197" y="99" key="SettingsEditor/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645528523646" />
-    <state x="361" y="187" key="Vcs.Push.Dialog.v2" timestamp="1645424356350">
-      <screen x="0" y="43" width="1536" height="821" />
+    <state x="2281" y="187" key="Vcs.Push.Dialog.v2" timestamp="1645599567258">
+      <screen x="1920" y="43" width="1536" height="821" />
     </state>
     <state x="361" y="187" key="Vcs.Push.Dialog.v2/0.43.1536.821@0.43.1536.821" timestamp="1645424356350" />
+    <state x="2281" y="187" key="Vcs.Push.Dialog.v2/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645599567258" />
     <state x="349" y="109" key="com.intellij.database.dbimport.ImportDialog" timestamp="1645191097480">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
@@ -272,14 +289,15 @@
       <screen x="0" y="43" width="1536" height="821" />
     </state>
     <state x="611" y="239" key="refactoring.ChangeSignatureDialog/0.43.1536.821@0.43.1536.821" timestamp="1645340987123" />
-    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup" timestamp="1645355230385">
+    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup" timestamp="1645607678057">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
     <state x="431" y="185" width="672" height="678" key="search.everywhere.popup/0.43.1536.821@0.43.1536.821" timestamp="1645355230385" />
+    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup/1920.43.1536.821/0.43.1536.821@0.43.1536.821" timestamp="1645607678057" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/UPML_elections$main.coverage" NAME="main Coverage Results" MODIFIED="1645517824928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/UPML_elections$generate_codes.coverage" NAME="generate_codes Coverage Results" MODIFIED="1645416511668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/UPML_elections$generate_codes.coverage" NAME="generate_codes Coverage Results" MODIFIED="1645611373627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/UPML_elections$upml_elections.coverage" NAME="upml_elections Coverage Results" MODIFIED="1645069926027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
   </component>
 </project>
