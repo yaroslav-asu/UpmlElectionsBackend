@@ -44,7 +44,9 @@ try:
     #         str(password),
     #         salt,
     #     ))
-    register_voter('c', 'c', 'c', 'c', 2)
+    password = generate_code(codes_length)
+    # print(password)
+    register_voter('admin', 'admin', 'admin', password, 1)
     con.commit()
 except Exception as error:
     con.close()

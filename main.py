@@ -27,7 +27,7 @@ origins = [
 ]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -420,7 +420,7 @@ def login_by_qr(name_hash: loginSerializer):
     con.close()
     for person in result:
         if hashlib.sha256(
-            bytes(' '.join([person[:3]]) + 'salt1', encoding='utf-8')).hexdigest() == \
+            bytes(' '.join(person[:3]) + 'salt1', encoding='utf-8')).hexdigest() == \
             name_hash.name_hash:
             return person[3:]
     return False
@@ -439,32 +439,38 @@ def register_voter(name, surname, patronymic, password, role=0):
     con.close()
 
 
+def user_in_db(name, surname, patronymic):
+    con = sqlite3.connect(database_name)
+    cur = con.cursor()
+    cur.execute('''select id from voters where name = ? and surname = ? and patronymic = ?''',
+                (name, surname, patronymic,))
+    result = cur.fetchone()
+    con.commit()
+    con.close()
+    if result:
+        return True
+    return False
+
+
 @app.post('/register/')
-def register(name: str = Form(...), surname: str = Form(...), patronymic: str = Form(...)):
-    register_voter(name, surname, patronymic, generate_code(codes_length))
+def register(name: str = Form(...), surname: str = Form(...), patronymic: str = Form(...),
+             admin_session_id: str = Form(...)):
+    if is_admin_session_id(admin_session_id) and not user_in_db(name, surname, patronymic):
+        register_voter(name, surname, patronymic, generate_code(codes_length))
+        return True
+    return False
 
 
-# 9d00071129696abffdabc3f28cd55aae523c9c46f9a97b451df60214a0d32ed0
-
-# @app.get('/user-enter-qr/{session_id}/{username}')
-# def get_user_enter_qr(session_id: str,
-#                       username: str):
-#     if is_admin_session_id(session_id):
-#         con = sqlite3.connect(database_name)
-#         cur = con.cursor()
-#         print(username)
-#         cur.execute('''select password, salt from voters where surname = ? and name = ? and
-#         patronymic = ?''', tuple(username.split()))
-#         result = cur.fetchone()
-#         con.close()
-#         # if result:
-#         #     return decode_password(result[0], bytes(result[1], 'utf-8'))
-#
-
-#
-# @app.get('/test-header/')
-# def test_header(name: Optional[str] = Header(None)):
-#     return name
+@app.get('/voters-data/{admin_session_id}')
+def get_voters_data(admin_session_id: str):
+    if is_admin_session_id(admin_session_id):
+        con = sqlite3.connect(database_name)
+        cur = con.cursor()
+        cur.execute('''select name,surname, patronymic from votes join voters on id = "voter-id"''')
+        result = cur.fetchone()
+        con.commit()
+        con.close()
+        return result
 
 
 if __name__ == '__main__':
