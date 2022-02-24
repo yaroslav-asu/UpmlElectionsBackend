@@ -419,8 +419,8 @@ def login_by_qr(name_hash: loginSerializer):
     result = cur.fetchall()
     con.close()
     for person in result:
-        if (' '.join(person[:3]) + 'salt1') == name_hash.name_hash:
-            print((' '.join(person[:3]) + 'salt1') == name_hash.name_hash)
+        if hashlib.sha256(bytes(' '.join(person[:3]) + 'salt1', encoding='utf-8')) == \
+            name_hash.name_hash:
             return person[3:]
     return False
 
