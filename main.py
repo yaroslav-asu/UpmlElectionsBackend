@@ -463,7 +463,7 @@ if __name__ == '__main__':
     try:
         import os
 
-        register_voter('tv', 'tv', 'tv', 'television_show')
+        # register_voter('tv', 'tv', 'tv', 'television_show')
 
         command = 'uvicorn main:app --reload'
         os.system(command)
