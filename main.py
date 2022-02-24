@@ -27,7 +27,7 @@ origins = [
 ]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -408,17 +408,34 @@ class LoginByQrSerializer(BaseModel):
 
 
 @app.post('/qr-login/')
-def login_by_qr(serializer: LoginByQrSerializer):
-    # print(is_admin_session_id('wseowefgaosrquhe'))
-    if is_admin_session_id(serializer.admin_session_id):
-        con = sqlite3.connect(database_name)
-        cur = con.cursor()
-        cur.execute('''select "session-id", role from voters where surname = ? and name = ? and 
-        patronymic = ?''', serializer.name.split())
-        result = cur.fetchone()
-        con.close()
-        return result
+def login_by_qr(name_hash: str):
+    con = sqlite3.connect(database_name)
+    cur = con.cursor()
+    cur.execute('''select name, surname, patronymic, "session-id", role from voters''')
+    result = cur.fetchall()
+    con.close()
+    for person in result:
+        if (' '.join(person[:3]) + 'salt1') == name_hash:
+            return person[3:]
     return False
+
+
+def register_voter(name, surname, patronymic, password, role=0):
+    con = sqlite3.connect(database_name)
+    cur = con.cursor()
+    salt = generate_code(codes_length)
+    coded_password = hashlib.pbkdf2_hmac('sha256', bytes(password, 'utf8'),
+                                         bytes(salt, 'utf8'), 2)
+    session_id = generate_code(codes_length)
+    cur.execute('''INSERT INTO voters VALUES (null, ?, ?, ?, ?, ?, ?, ?)''',
+                (name, surname, patronymic, coded_password, salt, session_id, role))
+    con.commit()
+    con.close()
+
+
+@app.post('/register/')
+def register(name: str = Form(...), surname: str = Form(...), patronymic: str = Form(...)):
+    register_voter(name, surname, patronymic, generate_code(codes_length))
 
 
 # @app.get('/user-enter-qr/{session_id}/{username}')
@@ -445,6 +462,8 @@ def login_by_qr(serializer: LoginByQrSerializer):
 if __name__ == '__main__':
     try:
         import os
+
+        register_voter('tv', 'tv', 'tv', 'television_show')
 
         command = 'uvicorn main:app --reload'
         os.system(command)
