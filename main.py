@@ -419,7 +419,8 @@ def login_by_qr(name_hash: loginSerializer):
     result = cur.fetchall()
     con.close()
     for person in result:
-        if hashlib.sha256(bytes(' '.join(person[:3]) + 'salt1', encoding='utf-8')) == \
+        if hashlib.sha256(
+            bytes(' '.join(['c', 'c', 'c']) + 'salt1', encoding='utf-8')).hexdigest() == \
             name_hash.name_hash:
             return person[3:]
     return False
@@ -442,6 +443,8 @@ def register_voter(name, surname, patronymic, password, role=0):
 def register(name: str = Form(...), surname: str = Form(...), patronymic: str = Form(...)):
     register_voter(name, surname, patronymic, generate_code(codes_length))
 
+
+# 9d00071129696abffdabc3f28cd55aae523c9c46f9a97b451df60214a0d32ed0
 
 # @app.get('/user-enter-qr/{session_id}/{username}')
 # def get_user_enter_qr(session_id: str,

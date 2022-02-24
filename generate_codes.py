@@ -8,7 +8,7 @@ cur = con.cursor()
 chars_length = len(chars)
 codes_length = 16
 
-
+# 9d00071129696abffdabc3f28cd55aae523c9c46f9a97b451df60214a0d32ed0
 def generate_code(length: int):
     global chars
     password = ''
