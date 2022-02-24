@@ -420,7 +420,7 @@ def login_by_qr(name_hash: loginSerializer):
     con.close()
     for person in result:
         if hashlib.sha256(
-            bytes(' '.join(['c', 'c', 'c']) + 'salt1', encoding='utf-8')).hexdigest() == \
+            bytes(' '.join([person[:3]]) + 'salt1', encoding='utf-8')).hexdigest() == \
             name_hash.name_hash:
             return person[3:]
     return False

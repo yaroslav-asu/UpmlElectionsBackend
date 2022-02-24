@@ -24,9 +24,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54c20569-326f-497c-bb88-8f5a08faa587" name="Default Changelist" comment="xcvv">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generate_codes.py" beforeDir="false" afterPath="$PROJECT_DIR$/generate_codes.py" afterDir="false" />
+    <list default="true" id="54c20569-326f-497c-bb88-8f5a08faa587" name="Default Changelist" comment="qr-login fix">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -158,7 +156,7 @@
       <workItem from="1645423379741" duration="26000" />
       <workItem from="1645423427813" duration="2131000" />
       <workItem from="1645443958965" duration="34452000" />
-      <workItem from="1645632328106" duration="6015000" />
+      <workItem from="1645632328106" duration="6058000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1645420549085</created>
@@ -258,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645674047505</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="qr-login fix">
+      <created>1645674518285</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1645674518285</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,7 +297,8 @@
     <MESSAGE value="qr login update" />
     <MESSAGE value="c" />
     <MESSAGE value="xcvv" />
-    <option name="LAST_COMMIT_MESSAGE" value="xcvv" />
+    <MESSAGE value="qr-login fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="qr-login fix" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2143" y="109" width="1089" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1645586127310">
