@@ -24,7 +24,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54c20569-326f-497c-bb88-8f5a08faa587" name="Default Changelist" comment="qr-login fix">
+    <list default="true" id="54c20569-326f-497c-bb88-8f5a08faa587" name="Default Changelist" comment="qr-login fix fix">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -156,7 +156,7 @@
       <workItem from="1645423379741" duration="26000" />
       <workItem from="1645423427813" duration="2131000" />
       <workItem from="1645443958965" duration="34452000" />
-      <workItem from="1645632328106" duration="6058000" />
+      <workItem from="1645632328106" duration="6268000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1645420549085</created>
@@ -263,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645674518285</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="qr-login fix fix">
+      <created>1645674556119</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1645674556119</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,7 +305,8 @@
     <MESSAGE value="c" />
     <MESSAGE value="xcvv" />
     <MESSAGE value="qr-login fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="qr-login fix" />
+    <MESSAGE value="qr-login fix fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="qr-login fix fix" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2143" y="109" width="1089" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1645586127310">
@@ -356,10 +364,10 @@
     </state>
     <state x="277" y="99" key="SettingsEditor/0.43.1536.821@0.43.1536.821" timestamp="1645268876526" />
     <state x="2197" y="99" key="SettingsEditor/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645528523646" />
-    <state x="361" y="187" key="Vcs.Push.Dialog.v2" timestamp="1645674049904">
+    <state x="361" y="187" key="Vcs.Push.Dialog.v2" timestamp="1645674557384">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
-    <state x="361" y="187" key="Vcs.Push.Dialog.v2/0.43.1536.821@0.43.1536.821" timestamp="1645674049904" />
+    <state x="361" y="187" key="Vcs.Push.Dialog.v2/0.43.1536.821@0.43.1536.821" timestamp="1645674557384" />
     <state x="361" y="187" key="Vcs.Push.Dialog.v2/1920.43.1536.821/0.43.1536.821@0.43.1536.821" timestamp="1645632373442" />
     <state x="2281" y="187" key="Vcs.Push.Dialog.v2/1920.43.1536.821/0.43.1536.821@1920.43.1536.821" timestamp="1645627603446" />
     <state x="349" y="109" key="com.intellij.database.dbimport.ImportDialog" timestamp="1645191097480">
