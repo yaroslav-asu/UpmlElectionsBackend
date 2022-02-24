@@ -407,15 +407,19 @@ class LoginByQrSerializer(BaseModel):
     name: str
 
 
+class loginSerializer(BaseModel):
+    name_hash: str
+
+
 @app.post('/qr-login/')
-def login_by_qr(name_hash: str):
+def login_by_qr(name_hash: loginSerializer):
     con = sqlite3.connect(database_name)
     cur = con.cursor()
     cur.execute('''select name, surname, patronymic, "session-id", role from voters''')
     result = cur.fetchall()
     con.close()
     for person in result:
-        if (' '.join(person[:3]) + 'salt1') == name_hash:
+        if (' '.join(person[:3]) + 'salt1') == name_hash.name_hash:
             return person[3:]
     return False
 
